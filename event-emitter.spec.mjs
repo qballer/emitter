@@ -1,3 +1,6 @@
+import {MyEventEmitter} from './event-emitter.mjs'
+import { strict as assert } from 'assert';
+
 async function test(name, callback) {
   try {
     const value = callback();
@@ -11,3 +14,13 @@ async function test(name, callback) {
   }
 }
 
+
+test('should emit data', function () {
+  const emitter = new MyEventEmitter()
+  let called = false 
+  emitter.on('data', function () {
+    called = true
+  })
+
+  assert.equal(called, true, "callback has been called")
+})
