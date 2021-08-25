@@ -21,6 +21,6 @@ test('should emit data', function () {
   emitter.on('data', function () {
     called = true
   })
-
+  emitter.emit('data')
   assert.equal(called, true, "callback has been called")
 })
